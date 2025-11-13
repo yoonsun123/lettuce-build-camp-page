@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LettuceBuild Thanksgiving Camps 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #CC5500; /* Deep Orange/Burnt Orange */
+            --secondary-color: #E6B800; /* Golden Yellow */
+            --accent-color: #8B0000; /* Dark Red/Cranberry */
+            --background-color: #FDF5E6; /* Old Lace/Cream */
+            --text-color: #333333;
+            --light-text-color: #ffffff;
+            --card-background: #ffffff;
+            --tech-bg: #4B3621; /* Dark Brown */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+        
+        .nav-logo {
+            color: var(--primary-color); /* Keep color for potential text fallback or other uses */
+            text-decoration: none;
+            display: flex; /* Use flexbox to center image if needed */
+            align-items: center; /* Vertically center image */
+            height: 100%; /* Allow logo to take full height of nav for centering */
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta a {
+            background: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta a:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 0;
+            background-color: var(--tech-bg); /* Fallback color */
+            background-image: url('assets/HeaderBanner.png');
+            background-size: cover;
+            background-position: center;
+            height: 50vh; /* Adjust as needed */
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Bring particles in front */
+        }
+
+        .hero h1, .hero p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .intro h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8em;
+            color: var(--tech-bg);
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 1.15em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .camps-background-wrapper {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            background-image: radial-gradient(circle at 1px 1px, rgba(10, 25, 47, 0.1) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+
+        .camps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            align-items: start;
+        }
+
+        .camp-card {
+            background: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+        
+        .camp-card:nth-child(1) { border-bottom-color: #ff6b6b; }
+        .camp-card:nth-child(2) { border-bottom-color: #4ecdc4; }
+        .camp-card:nth-child(3) { border-bottom-color: #f9a825; }
+        .camp-card:nth-child(4) { border-bottom-color: #ff6f61; }
+
+        .camp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .camp-icon {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            line-height: 1;
+            color: var(--primary-color);
+        }
+
+        .camp-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--tech-bg);
+        }
+
+        .camp-card p {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .camp-details {
+            font-size: 0.85em;
+            margin-bottom: 20px;
+        }
+
+        .camp-details div {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .camp-details strong {
+            color: var(--tech-bg);
+            min-width: 70px;
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .badge.beginner { background-color: #eafaf1; color: #1f7a4d; }
+        .badge.intermediate { background-color: #fff4e0; color: #b9770e; }
+        .badge.advanced { background-color: #ffeeed; color: #c0392b; }
+
+        .learn-more-btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .learn-more-btn:hover {
+            background: #ffc107;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(249, 168, 37, 0.4);
+        }
+
+        .register-btn-small {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--light-text-color);
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .register-btn-small:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 111, 97, 0.4);
+        }
+
+        .register-btn-small:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 111, 97, 0.4);
+        }
+
+        .register-btn-small:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 111, 97, 0.4);
+        }
+
+        .register-btn-small:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 111, 97, 0.4);
+        }
+
+        .final-cta-section {
+            display: grid;
+            grid-template-columns: 1fr; /* Start with a single column for mobile */
+            gap: 40px;
+            align-items: center;
+            background: var(--tech-bg);
+            color: var(--light-text-color);
+            padding: 60px;
+            border-radius: 15px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 30%),
+                              radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 30%);
+            transition: all 0.4s ease;
+        }
+
+        .final-cta-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        @media (min-width: 992px) {
+            .final-cta-section {
+                grid-template-columns: 2fr 1fr; /* Two columns for larger screens */
+            }
+        }
+
+        .final-cta-section::before {
+            content: '🦃';
+            position: absolute;
+            right: 20px;
+            bottom: -20px;
+            font-size: 10em;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+            transition: transform 0.5s ease;
+        }
+
+        .final-cta-section:hover::before {
+            transform: rotate(-5deg) scale(1.1);
+        }
+
+        .cta-content {
+            text-align: center;
+        }
+
+        @media (min-width: 992px) {
+            .cta-content {
+                text-align: left;
+            }
+        }
+
+        .cta-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3em;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .cta-content p {
+            font-size: 1.15em;
+            margin-bottom: 30px;
+            opacity: 0.8;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 992px) {
+            .cta-content p {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        .register-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: var(--light-text-color);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+
+        .offer-content {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            padding: 35px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .offer-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .offer-content h3 {
+            font-family: 'Merriweather', serif;
+            color: var(--secondary-color);
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .offer-content p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .offer-content strong {
+            font-size: 1.3em;
+            color: #fff;
+            font-weight: 700;
+            display: block;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #777;
+            margin-top: 50px;
+            background: #e9ecef;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* 10% from the top and centered */
+            padding: 40px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 700px;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slide-down 0.5s ease-out;
+        }
+
+        @keyframes slide-down {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .more-info {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out, padding 0.5s ease;
+            padding: 0 25px;
+            border-top: 1px solid #eee;
+            margin: 0 25px;
+        }
+
+        .more-info.active {
+            padding: 25px;
+            max-height: 2000px;
+        }
+
+        .more-info h4 {
+            font-family: 'Merriweather', serif;
+            color: var(--tech-bg);
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .more-info p, .more-info ul {
+            margin-bottom: 15px;
+        }
+
+        .more-info ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        .more-info li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 70px; }
+            nav { height: 70px; padding: 0 4%; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5em; }
+            .intro h2 { font-size: 2.2em; }
+            .cta-section h2 { font-size: 2.2em; }
+            .camps-grid { grid-template-columns: 1fr; }
+            .camps-background-wrapper { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-logo"><img src="assets/logo.avif" alt="LettuceBuild Logo" style="height: 50px; width: auto; vertical-align: middle;"></a>
+        <ul class="nav-links">
+            <li><a href="#camps">Camps</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="#register">Register</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div id="particles-js"></div>
+    </div>
+
+    <div class="container">
+        <div id="about" class="intro" data-aos="fade-up">
+            <h2>Choose Your A.I Adventure</h2>
+            <p>From beginner-friendly animation to advanced AI, we have the perfect Thanksgiving-themed coding experience for every student. All camps are designed to be fun, educational, and create something amazing to share with family and friends!</p>
+        </div>
+
+        <div class="camps-background-wrapper" data-aos="fade-up" data-aos-delay="100">
+            <div id="camps" class="camps-grid">
+                <!-- Camp 1: Scratch -->
+                <div class="camp-card">
+                    <div class="card-content">
+                        <span class="badge beginner">Beginner</span>
+                        <h3>🎨 Scratch Camp: Thanksgiving Feast Creator</h3>
+                        <p>Create your own animated animal character and signature Thanksgiving dish, then watch as everyone's creations come together in one collaborative digital feast where characters share what they're grateful for!</p>
+                        <div class="camp-details">
+                            <div><strong>📅 Dates:</strong> Nov 24-28</div>
+                            <div><strong>⏰ Time:</strong> 1.5 hrs/day</div>
+                            <div><strong>👥 Ages:</strong> 8-14 years</div>
+                            <div><strong>💻 Level:</strong> No experience needed</div>
+                            <div><strong>💰 Price:</strong> $200</div>
+                        </div>
+                        <a href="#" class="learn-more-btn" data-modal-target="#scratch-modal">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Camp 2: Roblox -->
+                <div class="camp-card">
+                    <div class="card-content">
+                        <span class="badge beginner">Roblox Builders</span>
+                        <h3>🎮 Roblox Adventure Camp: Turkey's Thanksgiving Quest</h3>
+                        <p>Build your own Thanksgiving challenge in Roblox Studio, then connect it with your classmates' creations into one epic multiplayer turkey adventure game you can play together!</p>
+                        <div class="camp-details">
+                            <div><strong>📅 Dates:</strong> Nov 24-28</div>
+                            <div><strong>⏰ Time:</strong> 1.5 hrs/day</div>
+                            <div><strong>👥 Ages:</strong> 10-16 years</div>
+                            <div><strong>💻 Level:</strong> Roblox familiarity helpful</div>
+                            <div><strong>💰 Price:</strong> $250</div>
+                        </div>
+                        <a href="#" class="learn-more-btn" data-modal-target="#roblox-modal">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Camp 3: Vibe Coding -->
+                <div class="camp-card">
+                    <div class="card-content">
+                        <span class="badge intermediate">All Levels</span>
+                        <h3>💻 Code with AI: Thanksgiving Game Builder Workshop</h3>
+                        <p>Team up with AI coding assistants to build a professional web game in just 2 days—create either a fast-paced Turkey Run racing game!</p>
+                        <div class="camp-details">
+                            <div><strong>📅 Dates:</strong> Nov 26 & 28</div>
+                            <div><strong>⏰ Time:</strong> 2 hrs/day</div>
+                            <div><strong>👥 Ages:</strong> 10-18 years</div>
+                            <div><strong>💻 Level:</strong> Basic coding helpful</div>
+                            <div><strong>💰 Price:</strong> $125</div>
+                        </div>
+                        <a href="#" class="learn-more-btn" data-modal-target="#ai-game-dev-modal">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Camp 4: AI/ML -->
+                <div class="camp-card">
+                    <div class="card-content">
+                        <span class="badge advanced">Advanced</span>
+                        <h3>🤖 AI & Machine Learning Camp: The Great Turkey's Escape</h3>
+                        <p>Build real machine learning models that power an intelligent "choose your own adventure" game where a clever turkey tries to escape Thanksgiving dinner—using the same Python tools professional data scientists use!</p>
+                        <div class="camp-details">
+                            <div><strong>📅 Dates:</strong> TBD</div>
+                            <div><strong>⏰ Time:</strong> 1.5 hrs/day (4 days)</div>
+                            <div><strong>👥 Ages:</strong> 15-18 years (Grades 10-12)</div>
+                            <div><strong>💻 Level:</strong> Python + Algebra 2 required</div>
+                            <div><strong>💰 Price:</strong> $300</div>
+                        </div>
+                        <a href="#" class="learn-more-btn" data-modal-target="#ai-ml-modal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="register" class="final-cta-section" data-aos="fade-up">
+            <div class="cta-content">
+                <h2>Ready for a Thanksgiving of Fun? 🎉</h2>
+                <p>Limited spots available! Register now to secure your child's place in one of our awesome Thanksgiving coding camps.</p>
+                <a href="https://forms.gle/oRejsXN995hUBQTR9" class="register-btn">Register Now →</a>
+            </div>
+            <div class="offer-content">
+                <h3>Special Offer!</h3>
+                <p>Book 2 students for the same class schedule together, and get <strong>10% OFF</strong> the 2nd student!</p>
+            </div>
+        </div>
+    </div>
+
+        <footer id="contact">
+        <p>© 2025 LettuceBuild. Making coding education accessible and fun! 🥬🛠️</p>
+        <p>Questions? Email us at <a href="mailto:weare@lettuce.build">weare@lettuce.build</a></p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="scratch-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h4>What Your Child Will Create:</h4>
+            <p>Over four fun-filled days, students will design their own unique animal character and a signature Thanksgiving dish using Scratch's intuitive block-based coding platform. On the first two days, they'll bring their creations to life with animations, sounds, and personality. During days three and four, the magic happens—all students' characters and dishes come together in one collaborative feast scene where animals gather around the table, present their dishes, and share what they're grateful for. The final project becomes a heartwarming digital celebration that students can proudly share with family and friends.</p><br>
+            <h4>Skills & Benefits:</h4>
+            <p>TThis camp introduces fundamental coding concepts like sequencing, loops, and events through creative storytelling. Students develop problem-solving skills, digital literacy, and collaborative teamwork while building confidence in their ability to code. No prior experience is needed—just creativity and enthusiasm! By the end, your child will have a portfolio-ready animation project and a solid foundation in block-based programming that prepares them for more advanced coding adventures.</p><br>
+            <h4>What Parents Should Know:</h4>
+            <ul>
+                <li><strong>Schedule:</strong> 4 sessions (Nov 24, 25, 26, 28), 1.5 hours each</li>
+                <li><strong>Requirements:</strong> Laptop with internet access, no prior coding experience needed</li>
+                <li><strong>Class Size:</strong> Small groups for personalized attention</li>
+                <li><strong>Takeaway:</strong> Animated Scratch project your child can play and share</li>
+            </ul>
+           
+        </div>
+    </div>
+    <div id="roblox-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h4>What Your Child Will Create:</h4>
+            <p>Students will dive into Roblox Studio to build their very own Thanksgiving-themed game challenge! Each participant chooses one exciting mission type: collecting feast ingredients through an obstacle course, gathering decorations in a treasure hunt, helping forest friends with delivery tasks, or creating an exploration maze to find the perfect party location. Over the first two days, students learn Roblox Studio basics and build their challenge environment with custom terrain, objects, and obstacles. Days three and four focus on adding interactive elements through simple scripting and then connecting everyone's challenges into one epic multiplayer turkey adventure game that the whole class can play together.</p><br>
+            <h4>Skills & Benefits:</h4>
+            <p>Your child will learn 3D game design, basic Lua scripting, and creative problem-solving in one of the most popular game development platforms used by millions. This camp builds spatial reasoning, logical thinking, and teaches core programming concepts like variables, functions, and event handling—all while having a blast building games. Students leave with a complete, playable Roblox game they can share with friends, plus the skills to continue creating their own games independently. Perfect for Roblox fans ready to go from player to creator!</p><br>
+            <h4>What Parents Should Know:</h4>
+            <ul>
+                <li><strong>Schedule:</strong> 4 sessions (Nov 24, 25, 26, 28), 1.5 hours each</li>
+                <li><strong>Requirements:</strong> Laptop, Roblox account (free), Roblox Studio installed</li>
+                <li><strong>Prior Experience:</strong> Familiarity with playing Roblox helpful but not required</li>
+                <li><strong>Takeaway:</strong> Published Roblox game your child can play with friends</li>
+            </ul>
+           
+        </div>
+    </div>
+    <div id="ai-game-dev-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h4>What Your Child Will Create:</h4>
+            <p>This intensive 2-day workshop teaches students to harness the power of AI coding assistants (like ChatGPT, Claude, or GitHub Copilot) to build professional-quality web games far beyond what beginners could typically create. Working as a collaborative team, students will build either a mysterious Thanksgiving Escape Room where players solve puzzles to escape Grandma's house before dinner gets cold, or a fast-paced Turkey Run racing game with obstacles and power-ups. Each student builds an individual component (a puzzle room, an obstacle course, the character creator, etc.) using AI to help write the HTML, CSS, and JavaScript code. On day two, everything comes together into one polished, playable game that students can share and be proud of.</p><br>
+            <h4>Skills & Benefits:</h4>
+            <p>Your child will learn the cutting-edge skill of AI-assisted development—how to effectively prompt AI tools, understand and modify generated code, and debug when things don't work perfectly. This is the future of coding: using AI as a powerful collaborator while still maintaining creative control and technical understanding. Students gain real web development experience with HTML, CSS, and JavaScript, learn to break down complex projects into manageable pieces, and discover that coding doesn't have to be intimidating. This workshop welcomes all experience levels because AI helps level the playing field—beginners can accomplish impressive projects while advanced students can dive deeper into customization.</p><br>
+            <h4>What Parents Should Know:</h4>
+            <ul>
+                <li><strong>Schedule:</strong> 2 sessions ONLY (Nov 26 & 28), 2 hours each - perfect for busy schedules!</li>
+                <li><strong>Requirements:</strong> Laptop with internet access, willingness to try new tools</li>
+                <li><strong>Prior Experience:</strong> Basic coding familiarity helpful but not required</li>
+                <li><strong>Takeaway:</strong> Web-based game + skills in using AI coding tools professionally</li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="ai-ml-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h4>What Your Child Will Create:</h4>
+            <p>This advanced, college-prep level camp teaches students how artificial intelligence actually works by building real machine learning models from the ground up. Students will create an interactive "choose your own adventure" story game where a clever turkey tries to escape becoming Thanksgiving dinner—but here's the twist: machine learning algorithms power the game's intelligence. Working in specialized teams, students will collect training data, engineer features, and train classification models using Python and industry-standard libraries like scikit-learn. One team builds a player personality classifier that adapts the story to match play styles (brave, cautious, clever), another creates an escape route success predictor that calculates survival odds based on game conditions, and a third develops an ending predictor that routes players to satisfying conclusions. By the final day, all models integrate into one AI-powered game that makes intelligent decisions in real-time.</p><br>
+            <h4>Skills & Benefits:</h4>
+            <p>Your child will gain genuine data science and machine learning experience that stands out on college applications and prepares them for STEM careers. They'll learn the complete ML workflow: data collection, preprocessing, feature engineering, model training with Decision Trees and other algorithms, evaluation using accuracy metrics and confusion matrices, and real-world application integration. This isn't a superficial "intro to AI" course—students work with the same Python libraries (scikit-learn, pandas, numpy) used by professional data scientists and understand core concepts like supervised learning, overfitting, and classification. Perfect for motivated students considering computer science, data science, or AI engineering majors who want hands-on experience beyond what high school typically offers.</p><br>
+            <h4>What Parents Should Know:</h4>
+            <ul>
+                <li><strong>Schedule:</strong> 4 sessions (dates TBD), 1.5 hours each</li>
+                <li><strong>STRICT Prerequisites Required:</strong>
+                    <ul>
+                        <li>✅ Completed Algebra 2 or higher</li>
+                        <li>✅ Proficient in Python programming (6+ months minimum)</li>
+                        <li>✅ Can write functions, loops, work with lists/dictionaries independently</li>
+                    </ul>
+                </li>
+                <li><strong>Requirements:</strong> Laptop with Python installed</li>
+                <li><strong>Takeaway:</strong> Working ML-powered game + portfolio-ready AI project</li>
+                <li><strong>Note:</strong> Students may be screened for prerequisites</li>
+            </ul>
+           
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50,
+            });
+
+            const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
+            const modals = document.querySelectorAll('.modal');
+            const closeBtns = document.querySelectorAll('.close-btn');
+
+            learnMoreBtns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const modal = document.querySelector(this.dataset.modalTarget);
+                    modal.style.display = "block";
+                });
+            });
+
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const modal = this.closest('.modal');
+                    modal.style.display = "none";
+                });
+            });
+
+            window.addEventListener('click', function (e) {
+                modals.forEach(modal => {
+                    if (e.target == modal) {
+                        modal.style.display = "none";
+                    }
+                });
+            });
+
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#556B2F" },
+                    "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+                    "opacity": { "value": 0.7, "random": false, "anim": { "enable": false } },
+                    "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#556B2F", "opacity": 0.6, "width": 1 },
+                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                    "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
+</body>
+</html>
