@@ -109,6 +109,35 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
         .hero {
             position: relative;
             text-align: center;
@@ -121,6 +150,7 @@
             width: 100%;
             padding-bottom: 30%; /* Adjust based on image aspect ratio */
             overflow: hidden;
+            min-height: 200px;
         }
 
         /* particles animation removed - related container and initialization deleted */
@@ -148,6 +178,12 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 60px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 15px;
+            }
         }
 
         .intro {
@@ -178,12 +214,26 @@
             background-size: 20px 20px;
         }
 
+        @media (max-width: 768px) {
+            .camps-background-wrapper {
+                padding: 20px 15px;
+                border-radius: 10px;
+            }
+        }
+
         .camps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             justify-content: center;
             align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .camps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
 
         .camp-card {
@@ -226,6 +276,12 @@
             font-size: 1.5em;
             margin-bottom: 15px;
             color: var(--tech-bg);
+        }
+
+        @media (max-width: 768px) {
+            .camp-card h3 {
+                font-size: 1.3em;
+            }
         }
 
         .camp-card p {
@@ -353,7 +409,6 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 0 30px;
             margin: 60px auto;
             width: 100%;
             max-width: 100%;
@@ -408,6 +463,14 @@
             justify-content: flex-start;
         }
 
+        @media (max-width: 768px) {
+            #register .cta-content {
+                padding: 20px;
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+        }
+
         #register .cta-content h2 {
             color: #B74A21;
             font-size: 2.1rem;
@@ -417,8 +480,14 @@
             font-weight: 700;
             display: flex;
             align-items: center;
-            flex-wrap: nowrap;
-            white-space: nowrap;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            #register .cta-content h2 {
+                font-size: 1.4rem;
+                white-space: normal;
+            }
         }
 
         #register .header-emoji {
@@ -476,6 +545,13 @@
             justify-content: flex-start;
         }
 
+        @media (max-width: 768px) {
+            #register .offer-content {
+                padding: 20px;
+                margin-right: 0;
+            }
+        }
+
         #register .offer-content h3 {
             color: #B74A21;
             font-size: 1.4rem;
@@ -502,23 +578,47 @@
         /* Mobile responsive */
         @media (max-width: 768px) {
             #register.final-cta-section {
-                padding: 0 15px;
+                padding: 30px 20px;
                 aspect-ratio: auto;
                 min-height: 400px;
+                margin: 40px auto;
+                background-color: #EF802C;
+                border-radius: 15px 15px 0 0;
+            }
+
+            #register .register-bg {
+                display: none;
             }
 
             #register .register-inner {
                 flex-direction: column;
                 padding: 15px;
+                gap: 15px;
             }
 
             #register .cta-content,
             #register .offer-content {
                 width: 100%;
+                flex: 1;
             }
 
             #register .cta-content h2 {
                 font-size: 1.4rem;
+            }
+
+            #register .offer-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #register.final-cta-section {
+                padding: 0 10px;
+                min-height: 350px;
+            }
+
+            #register .register-inner {
+                padding: 10px;
             }
         }
 
@@ -662,6 +762,16 @@
             animation: slide-down 0.5s ease-out;
         }
 
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 25px 20px;
+                margin: 5% auto;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+        }
+
         @keyframes slide-down {
             from {
                 transform: translateY(-50px);
@@ -725,24 +835,169 @@
         }
 
         @media (max-width: 768px) {
-            body { padding-top: 70px; }
-            nav { height: 70px; padding: 0 4%; }
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.5em; }
-            .intro h2 { font-size: 2.2em; }
-            .cta-section h2 { font-size: 2.2em; }
-            .camps-grid { grid-template-columns: 1fr; }
-            .camps-background-wrapper { padding: 20px; }
+            body { 
+                padding-top: 70px; 
+            }
+            
+            nav { 
+                height: 70px; 
+                padding: 0 4%; 
+            }
+
+            .nav-logo img {
+                height: 40px !important;
+            }
+            
+            .nav-links { 
+                display: none; 
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px 20px;
+                width: 100%;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-cta.mobile {
+                display: block;
+                width: 100%;
+                padding: 15px 20px;
+            }
+
+            .nav-cta.mobile a {
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding-bottom: 50%;
+                min-height: 150px;
+            }
+
+            .hero h1 { 
+                font-size: 2em; 
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+            
+            .intro h2 { 
+                font-size: 1.8em; 
+            }
+
+            .intro p {
+                font-size: 1em;
+            }
+            
+            .cta-section h2 { 
+                font-size: 1.8em; 
+            }
+
+            .camp-card {
+                margin-bottom: 0;
+            }
+
+            .card-content {
+                padding: 20px;
+            }
+
+            .camp-details {
+                font-size: 0.8em;
+            }
+
+            .camp-details strong {
+                min-width: 60px;
+            }
+
+            .learn-more-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            footer {
+                padding: 30px 15px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-bottom: 60%;
+            }
+
+            .hero h1 {
+                font-size: 1.6em;
+            }
+
+            .intro h2 {
+                font-size: 1.5em;
+            }
+
+            .camp-card h3 {
+                font-size: 1.1em;
+            }
+
+            #register .cta-content h2 {
+                font-size: 1.2rem;
+            }
+
+            #register .cta-content p,
+            #register .offer-content p {
+                font-size: 0.9rem;
+            }
+
+            .contact-strip h4 {
+                font-size: 1rem;
+            }
+
+            .contact-strip a {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <nav>
         <a href="https://lettuce.build" class="nav-logo"><img src="assets/logo.avif" alt="LettuceBuild Logo" style="height: 50px; width: auto; vertical-align: middle;"></a>
-        <ul class="nav-links">
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#camps">Camps</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li class="nav-cta mobile"><a href="#register">Register</a></li>
         </ul>
         <div class="nav-cta">
             <a href="#register">Register</a>
@@ -997,6 +1252,34 @@
                 once: true,
                 offset: 50,
             });
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (mobileMenuToggle && navLinks) {
+                mobileMenuToggle.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const navLinkItems = navLinks.querySelectorAll('a');
+                navLinkItems.forEach(link => {
+                    link.addEventListener('click', function () {
+                        mobileMenuToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                        mobileMenuToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
 
             const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
             const modals = document.querySelectorAll('.modal');
